@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Game Assistant</title>
+  <meta name="description" content="Territorial.io - The Art of Conquest">
+  <meta name="keywords" content="territorial.io,territory io,tt.io,territorial game,territory game,territorial io,map game,conquest game,david tschacher,territorial,territory game,territory.io,territory games io">
+  <meta name="author" content="David Tschacher">
+</head>
+<body onload="aiCommand746(0);">
+  <style>
+    /* Basic Style Settings */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      overflow: hidden;
+    }
+
+    #canvasA {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    /* Draggable Panel Style Settings */
+    #draggable-panel {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      width: 200px;
+      background-color: #3498db;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      cursor: grab;
+      z-index: 1000;
+      color: #fff;
+    }
+
+    #draggable-panel h2 {
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    /* Panel Content Styles */
+    #account-input {
+      width: 100%;
+      padding: 8px;
+      border: none;
+      background-color: #ecf0f1;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+
+    #activate-button,
+    .program-button {
+      display: block;
+      width: 100%;
+      padding: 8px;
+      background-color: #2ecc71;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    #activate-button:hover,
+    .program-button:hover {
+      background-color: #27ae60;
+    }
+
+    #status-message {
+      margin-top: 10px;
+      font-size: 14px;
+    }
+
+    .program-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+  </style>
+  
+  <canvas id="canvasA" style="width: 1366px; height: 367px;" width="1366" height="367"></canvas>
+  
+  <div id="draggable-panel">
+    <h2>pls reload after joın acc</h2>
+    <input type="text" id="account-input" placeholder="Account Name">
+    <button id="activate-button">Activate</button>
+    <p id="status-message"></p>
+    <div class="program-buttons">
+      <button class="program-button" id="micro-program-button">Micro Program</button>
+      <button class="program-button" id="opening-program-button">Opening Program</button>
+      <button class="program-button" id="boost-program-button">Boost Program</button>
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+  <script src="panel.js"></script>
+  <script src="hack.js"></script>
+  <script>
+    // JavaScript code to make the panel draggable
+    const panel = document.getElementById("draggable-panel");
+
+    let offsetX, offsetY;
+
+    panel.addEventListener("mousedown", startDrag);
+    panel.addEventListener("mouseup", endDrag);
+
+    function startDrag(e) {
+      offsetX = e.clientX - panel.getBoundingClientRect().left;
+      offsetY = e.clientY - panel.getBoundingClientRect().top;
+
+      document.addEventListener("mousemove", drag);
+    }
+
+    function drag(e) {
+      const x = e.clientX - offsetX;
+      const y = e.clientY - offsetY;
+
+      panel.style.left = `${x}px`;
+      panel.style.top = `${y}px`;
+    }
+
+    function endDrag() {
+      document.removeEventListener("mousemove", drag);
+    }
+  </script>
+</body>
+</html>
